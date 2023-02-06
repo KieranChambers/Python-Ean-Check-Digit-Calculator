@@ -20,13 +20,14 @@ def calculator(input):
 
         # Check if the input has a valid EAN format
         if isNum != True or isCorrectLength != True:
-            print(f'{position} is not a valid input. {reason}.')
+            print(f"{position} is not a valid input. {reason}.")
         else:
             checkDigit, numberWithCheckDigit = calculateEan(position)
 
             # Output to console
-            print( f'Original Value: {position} Check Digit: {checkDigit} New value: {numberWithCheckDigit}'
-)
+            print(
+                f"Original Value: {position} Check Digit: {checkDigit} New value: {numberWithCheckDigit}"
+            )
 
 
 calculator(testEanArray)

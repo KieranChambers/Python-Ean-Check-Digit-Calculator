@@ -4,23 +4,20 @@ import re
 
 
 def isValidEan(input):
-    isNum = bool(re.match(r'^\d+$', str(input)))
+    isNum = bool(re.match(r"^\d+$", str(input)))
     length = len(str(input))
-    reason = ''
+    reason = ""
 
-    validLength = (
-        length >= 7
-        and length <= 17
-        and isNum
-    )
+    validLength = length >= 7 and length <= 17 and isNum
     if not isNum:
-        reason = 'Not a number'
+        reason = "Not a number"
     elif length < 7:
-        reason = 'Too short'
+        reason = "Too short"
     elif length > 17:
-        reason = 'Too long'
+        reason = "Too long"
 
     return [isNum, validLength, reason]
+
 
 # A function that converts a number to an array
 # For example: 2320007711125 -> [2, 3, 2, 0, 0, 0, 7, 7, 1, 1, 1, 2, 5]
@@ -29,12 +26,14 @@ def isValidEan(input):
 def convertToArray(num):
     return [int(digit) for digit in str(num)]
 
+
 # A function that checks the length of an array and returns whether it's an
 # even or odd amount of numbers. I.e. 12 or 13
 
 
 def numberParity(arrayLength):
-    return 'odd' if arrayLength % 2 == 1 else 'even'
+    return "odd" if arrayLength % 2 == 1 else "even"
+
 
 # A function that checks the length of an array and returns whether it's an
 # even or odd amount of numbers. I.e. 12 or 13
@@ -43,7 +42,7 @@ def numberParity(arrayLength):
 def oddEvenLogic(array, parity):
     tempArray = []
 
-    if parity != 'even':
+    if parity != "even":
         for i, value in enumerate(array):
             tempArray.append(value * 3 if i % 2 != 1 else value)
     else:
@@ -57,6 +56,7 @@ def calculateCheckDigit(totalSum):
     nearestRoundNumber = (totalSum // 10 + 1) * 10
     return str(nearestRoundNumber - totalSum)
 
+
 # Being called from index. Main Function.
 
 
@@ -66,12 +66,12 @@ def calculateEan(validEan):
     parity = numberParity(len(arrayOfNumbers))
     tempArray = oddEvenLogic(arrayOfNumbers, parity)
 
-# Cycles through every position in the tempArray and adds those values to the totalSum
+    # Cycles through every position in the tempArray and adds those values to the totalSum
     for position in tempArray:
         totalSum += position
 
     checkDigit = calculateCheckDigit(totalSum)
 
-# Join the original input with the new check digit that we've calculated
+    # Join the original input with the new check digit that we've calculated
     numberWithCheckDigit = int(str(validEan) + checkDigit)
     return [int(checkDigit), numberWithCheckDigit]

@@ -2,6 +2,7 @@ from utils import isValidEan, calculateEan
 
 testEanArray = [
     1730020496575,
+    17300204965,
     "123123asdwadea212e",
     1730020496575,
     "false",
@@ -24,8 +25,8 @@ def calculator(input):
             checkDigit, numberWithCheckDigit = calculateEan(position)
 
             # Output to console
-            output = f'Original Value: {position}. Check Digit: {checkDigit}. New value: {numberWithCheckDigit}'
-            print(output)
+            print( f'Original Value: {position} Check Digit: {checkDigit} New value: {numberWithCheckDigit}'
+)
 
 
 calculator(testEanArray)

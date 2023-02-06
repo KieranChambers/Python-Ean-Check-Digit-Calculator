@@ -14,11 +14,11 @@ def isValidEan(input):
         and isNum
     )
     if not isNum:
-        reason = 'Reason: not a number'
+        reason = 'Not a number'
     elif length < 7:
-        reason = 'Reason: too short'
+        reason = 'Too short'
     elif length > 17:
-        reason = 'Reason: too long'
+        reason = 'Too long'
 
     return [isNum, validLength, reason]
 
@@ -42,12 +42,13 @@ def numberParity(arrayLength):
 
 def oddEvenLogic(array, parity):
     tempArray = []
+
     if parity != 'even':
-        for i, digit in enumerate(array):
-            tempArray.append(digit if i % 2 == 0 else digit)
+        for i, value in enumerate(array):
+            tempArray.append(value * 3 if i % 2 != 1 else value)
     else:
-        for i, digit in enumerate(array):
-            tempArray.append(digit if i % 2 == 0 else digit * 3)
+        for i, value in enumerate(array):
+            tempArray.append(value if i % 2 == 0 else value * 3)
     return tempArray
 
 

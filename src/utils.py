@@ -8,13 +8,12 @@ def isValidEan(input):
     length = len(str(input))
     reason = ""
 
-    validLength = length >= 7 and length <= 17 and isNum
+    validLength = True if length in [7, 11, 12, 13, 16, 17] else False
+
     if not isNum:
         reason = "Not a number"
-    elif length < 7:
-        reason = "Too short"
-    elif length > 17:
-        reason = "Too long"
+    elif not validLength:
+        reason = "Incorrect Length. Supported EAN lengths: 7, 11, 12, 13, 16, 17"
 
     return [isNum, validLength, reason]
 
@@ -53,7 +52,7 @@ def oddEvenLogic(array, parity):
 
 # A functon for deciding what math we're using for odd/even length arrays
 def calculateCheckDigit(totalSum):
-    nearestRoundNumber = (totalSum // 10 + 1) * 10
+    nearestRoundNumber = (totalSum + 9) // 10 * 10
     return str(nearestRoundNumber - totalSum)
 
 

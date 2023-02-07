@@ -1,6 +1,6 @@
 from utils import isValidEan, calculateEan
 
-testEanArray = [
+testArray = [
     1730020496575,
     17300204965,
     "123123asdwadea212e",
@@ -14,8 +14,8 @@ testEanArray = [
 ]
 
 
-def calculator(input):
-    for position in input:
+def calculator(array):
+    for position in array:
         isNum, isCorrectLength, reason = isValidEan(position)
 
         # Check if the input has a valid EAN format
@@ -30,4 +30,4 @@ def calculator(input):
             )
 
 
-calculator(testEanArray)
+calculator(testArray)
